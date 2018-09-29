@@ -11,25 +11,21 @@ const inject      = require('gulp-inject');
 const concat      = require('gulp-concat');
 
 const series      = require('stream-series');
-const runSequence = require('run-sequence');
 
 const paths = {
   src: './src/**/*',
-  srcHTML: './*.html',
+  srcHTML: './src/*.html',
   srcSASS: './src/**/*.sass',
   srcJS: './src/**/*.js',
-  srcXwiperJS: './src/js/xwiper.js',
   srcAppJS: './src/js/main.js',
   srcIMG: './src/img/**/*',
   srcFONTS: './src/fonts/**/*',
   srcPDF: './**/*.pdf',
   nodeLibsJS: [
     './node_modules/jquery/dist/jquery.min.js',
-    './node_modules/jquery-parallax.js/parallax.min.js',
-    './node_modules/slick-carousel/slick/slick.min.js',
   ],
   nodeLibsCSS: [
-    './node_modules/bootstrap/dist/css/bootstrap.min.css',
+    './node_modules/normalize.css/normalize.css',
   ],
   dist: './dist',
   distHTML: './dist/*.html',
@@ -78,10 +74,7 @@ gulp.task('js:vendors', function () {
 });
 
 gulp.task('js:app', function () {
-  return gulp.src([
-      paths.srcXwiperJS,
-      paths.srcAppJS
-    ])
+  return gulp.src(paths.srcAppJS)
     .pipe(concat('app.js'))
     // .pipe(uglify())
     .pipe(gulp.dest(paths.distJS));
@@ -101,11 +94,6 @@ gulp.task('copy:fonts', function () {
   return gulp.src(paths.srcFONTS)
     .pipe(gulp.dest(paths.distFONTS));
 });
-
-// gulp.task('copy:pdf', function () {
-//   return gulp.src(paths.srcPDF)
-//     .pipe(gulp.dest(paths.dist));
-// });
 
 gulp.task('inject', function () {
   let distJSVendors = gulp.src(paths.distJSVendors, {read: false});
@@ -133,15 +121,23 @@ gulp.task('styles', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('src/sass/**/*.sass', ['styles']);
+  gulp.watch(paths.srcSASS, gulp.series('build:styles'));
+  gulp.watch(paths.srcHTML, gulp.series('build:html'));
+  gulp.watch(paths.srcJS, gulp.series('build:js'));
 });
 
-// BUILD TASKS
-// ------------
-gulp.task('default', function(done) {
-  runSequence('styles', 'watch', 'js:vendors', 'js:app', 'css:vendors', 'copy:html', 'copy:images', 'copy:fonts', 'inject', done);
-});
+gulp.task('build:styles', gulp.series('styles', 'css:vendors', function (done) {
+  done();
+}));
 
-gulp.task('build', function(done) {
-  runSequence('styles', done);
-});
+gulp.task('build:html', gulp.series('copy:html', 'copy:images', 'copy:fonts', 'inject', function (done) {
+  done();
+}));
+
+gulp.task('build:js', gulp.series('js:vendors', 'js:app', function (done) {
+  done();
+}));
+
+gulp.task('default', gulp.series('styles', 'js:vendors', 'js:app', 'css:vendors', 'copy:html', 'copy:images', 'copy:fonts', 'inject', function (done) {
+  done();
+}));
