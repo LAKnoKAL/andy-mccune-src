@@ -26,6 +26,8 @@ const paths = {
   ],
   nodeLibsCSS: [
     './node_modules/normalize.css/normalize.css',
+    './node_modules/bootstrap/dist/css/bootstrap-reboot.min.css',
+    './node_modules/bootstrap/dist/css/bootstrap-grid.min.css'
   ],
   dist: './dist',
   distHTML: './dist/*.html',
