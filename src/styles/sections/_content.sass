@@ -1,0 +1,52 @@
+.main-description
+  padding: 2rem 1rem
+  line-height: 2
+  color: #C4C4C4
+
+  &-wrap
+    @media (min-width: 1200px)
+      height: 100vh
+      overflow-y: auto !important
+      padding: 0 5rem !important
+
+    @media (min-width: 1920px)
+      padding: 0 10rem !important
+
+  a
+    color: #C4C4C4
+    text-decoration: underline
+    transition: all .6s
+
+    &:hover
+      color: #000
+
+  &-header
+    padding: 2rem 1rem
+    color: #000
+
+    @media (max-width: 1199px)
+      border-bottom: 1px solid #E1E1E1
+
+    @media (min-width: 1200px)
+      padding-bottom: 0
+
+    h1
+      margin: 0
+      font-size: 1.2em
+
+      @media (min-width: 415px)
+        font-size: 3em
+
+  &-footer
+    padding: 2rem 0 0
+
+    .footer-heading
+      padding: 0 1rem
+
+      h4
+        margin-bottom: 0
+        padding-bottom: 1rem
+        border-bottom: 1px solid #D7D7D7
+        letter-spacing: 2px
+        font-weight: 400
+        color: #C7C7C7
