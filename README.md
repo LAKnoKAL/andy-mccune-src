@@ -1,4 +1,9 @@
-# Andy Mccune
+# Andy Mccune site sources
+live - https://laknokal.github.io/andy-mccune/
 
-### Compile sass script
-`npm start`
+### Build (watcher off)
+    npm start
+
+### Dev (watcher on)
+    npm run watch
+
