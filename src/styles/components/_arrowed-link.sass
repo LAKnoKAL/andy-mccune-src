@@ -5,11 +5,13 @@
     content: ''
     display: inline-block
     margin-left: .5rem
+    margin-bottom: -1px
     width: 15px
     height: 13px
     background: url('../img/arrow-black.svg') no-repeat
+    opacity: 1
     background-size: contain
-    transition: all .6s
+    transition: all .4s
 
     .contact-wrap &
       @media (max-width: 1199px)
@@ -19,6 +21,10 @@
     &:hover
       &:after
         margin-left: 15px
+
+  &:hover
+    &:after
+      opacity: .2
 
   .contact-wrap &
     @media (max-width: 1199px)
