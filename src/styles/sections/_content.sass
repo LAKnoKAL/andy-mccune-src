@@ -3,20 +3,25 @@
   line-height: 2
   color: $grayC4
 
+  @media (min-width: 1200px)
+    padding: 2rem 0
+
   &-wrap
     @media (min-width: 1200px)
       padding: 0 5rem !important
       margin-left: 50%
 
-    @media (min-width: 1920px)
-      padding: 0 12rem !important
+    @media (min-width: 1680px)
+      padding: 0 9.375rem !important
 
   a
+    border-bottom: 1px solid $grayC4
     color: $grayC4
-    text-decoration: underline
-    transition: all .6s
+    transition: color .6s
 
     &:hover
+      text-decoration: none
+      border-bottom: none
       color: #000
 
   &-header
@@ -27,23 +32,24 @@
       border-bottom: 1px solid $grayE1
 
     @media (min-width: 1200px)
-      padding-top: 5rem
-      padding-bottom: 0
+      padding: 6rem 0 0
 
     h1
       margin: 0
       font-size: 1.2em
+      letter-spacing: 3px
 
       @media (min-width: 415px)
         font-size: 1.5625em
 
   &-footer
     .footer-heading
-      padding: 0 2rem
+      @media (max-width: 1199px)
+        padding: 0 2rem
 
       h6
         margin-bottom: 0
-        padding-bottom: 1rem
+        padding-bottom: .8rem
         border-bottom: 1px solid $grayD7
         letter-spacing: 2px
         font-weight: 400

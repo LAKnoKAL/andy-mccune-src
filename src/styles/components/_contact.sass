@@ -1,11 +1,10 @@
 .contact
   &-wrap
-    padding: 2rem
+    padding: 4rem 2rem 2rem
     background: #000
 
     @media (min-width: 1200px)
-      padding-top: 0
-      padding-bottom: 5rem
+      padding: 0 0 5rem
       background: none
 
   &-heading
@@ -16,7 +15,7 @@
 
       h6
         margin-bottom: 0
-        padding-bottom: 1rem
+        padding-bottom: .8rem
         border-bottom: 1px solid $grayD7
         letter-spacing: 2px
         font-weight: 400
@@ -25,3 +24,10 @@
   &-content
     @media (min-width: 1200px)
       padding-top: 2rem
+
+    > a
+      transition: color .6s
+
+      &:hover
+        text-decoration: none
+        color: $grayC4
